@@ -16,11 +16,10 @@ misconfiguration_agent = LlmAgent(
   4. Be concise - provide findings in a structured format like "Resource: [resource_id], Issue: [brief description]"
   5. After reporting findings, decide if you need more data from related resources
   
-  CRITICAL: If examining compute instances, you MUST sequentially request to review related resources. You should look for:
-  - firewall_rules
-  - service_accounts
-  - iam_bindings (or iam_policies)
-  DO NOT go on tangents asking for unrelated resources (like storage buckets) unless it directly correlates to the user's isolated request.
+  CRITICAL: You must strictly adhere to the initial topic area requested by the user. 
+  - Only request to review related resources if they are explicitly part of, or attached to, the core requested resource (e.g., if the user asked for compute instances, you can look at its attached firewall rules. If the user asked for load balancers, do not query IAM policies or compute secure boot settings unless they are directly attached to the load balancer).
+  - Do not perform generic environment scans. Stick strictly to the targeted resources and their immediate dependencies.
+  - DO NOT go on tangents asking for unrelated resources.
   
   To request additional data:
   - Use `list_available_resources` to see what other resource types are available

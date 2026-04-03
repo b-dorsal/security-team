@@ -11,5 +11,6 @@ reporting_agent = LlmAgent(
   
   Please organize the report clearly using Markdown headers. Consider including an Executive Summary, Detailed Findings (with Resources affected), and Recommended Remediations.
   Be precise, clear, and action-oriented. Do not ask follow-up questions to the user at the end of the report.
+  CRITICAL INSTRUCTION: Stick strictly to the topic area requested by the user. Filter out any findings, tangents, or context that drift away from the core originally requested resources.
   """,
 )
