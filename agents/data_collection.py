@@ -17,5 +17,5 @@ data_collection_agent = LlmAgent(
   3. Pick the resource name that most closely matches what you need to gather
   4. Use the `query_cloud_config` tool to retrieve all resources of that type
   5. Be concise and just collect the data - the MisconfigurationAgent will analyze it""",
-  tools=[query_cloud_config, list_available_resources]
+  tools=[list_available_resources, query_cloud_config]
 )
