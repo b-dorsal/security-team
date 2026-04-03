@@ -1,2 +1,4 @@
 .env
 .python-version
+.adk
+__pycache__
