@@ -32,6 +32,9 @@ def query_cloud_config(resource_type: str) -> str:
         
         resources = data.get("resources").get(resource_type)
         
+        if not resources:
+            return json.dumps({"error": f"resource type {resource_type} not found"})
+
         for resource in resources:
             if hasattr(resources[resource], '__setitem__'):
                 resources[resource]['tcbs'] = None
