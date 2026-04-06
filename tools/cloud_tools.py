@@ -1,4 +1,5 @@
 import json
+import os
 
 def list_available_resources() -> str:
     """
@@ -6,7 +7,7 @@ def list_available_resources() -> str:
     """
     print(f'Agent requests resource list')
     try:
-        with open('cloud_config.json', 'r') as file:
+        with open(os.environ['CLOUD_CONFIG_PATH'], 'r') as file:
             data = json.load(file)
         response = json.dumps(list(res for res in data.get("resources")))
         print(response)
@@ -27,7 +28,7 @@ def query_cloud_config(resource_type: str) -> str:
     """
     print(f'Agent requests {resource_type}')
     try:
-        with open('cloud_config.json', 'r') as file:
+        with open(os.environ['CLOUD_CONFIG_PATH'], 'r') as file:
             data = json.load(file)
         
         resources = data.get("resources").get(resource_type)
